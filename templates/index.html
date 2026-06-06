@@ -1,508 +1,411 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NtandoMods — Course Books</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>NtandoMods — Zimbabwe's #1 Practical Skills Training</title>
   <style>
-    :root {
-      --primary: #1a1a2e;
-      --accent: #e94560;
-      --gold: #f5a623;
-      --green: #27ae60;
-      --blue: #2980b9;
-      --light-bg: #f8f9fa;
-      --card-bg: #ffffff;
-      --border: #e0e0e0;
-      --text: #2c2c2c;
-      --muted: #6c757d;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: var(--light-bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    /* HEADER */
-    header {
-      background: var(--primary);
-      color: white;
-      padding: 0;
-    }
-
-    .header-top {
-      background: var(--accent);
-      text-align: center;
-      padding: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .header-main {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 40px;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .logo-icon {
-      width: 56px;
-      height: 56px;
-      background: var(--accent);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-    }
-
-    .logo-text h1 {
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-
-    .logo-text p {
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-      margin-top: 2px;
-    }
-
-    .header-stats {
-      display: flex;
-      gap: 24px;
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat .num {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--gold);
-    }
-
-    .stat .label {
-      font-size: 11px;
-      color: rgba(255,255,255,0.65);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* HERO */
-    .hero {
-      background: linear-gradient(135deg, var(--primary) 0%, #16213e 60%, #0f3460 100%);
-      color: white;
-      text-align: center;
-      padding: 60px 40px 50px;
-    }
-
-    .hero h2 {
-      font-size: 36px;
-      font-weight: 800;
-      margin-bottom: 14px;
-      line-height: 1.2;
-    }
-
-    .hero h2 span { color: var(--gold); }
-
-    .hero p {
-      font-size: 16px;
-      color: rgba(255,255,255,0.8);
-      max-width: 560px;
-      margin: 0 auto 28px;
-      line-height: 1.6;
-    }
-
-    .hero-badges {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .badge {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.25);
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    /* PROGRAMMES SECTION */
-    .section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 48px 24px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .section-line {
-      flex: 1;
-      height: 2px;
-      background: var(--border);
-    }
-
-    .section-title {
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    /* BOOK CARDS */
-    .books-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 24px;
-    }
-
-    .book-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .book-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-    }
-
-    .card-header {
-      padding: 24px 24px 16px;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .book-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      flex-shrink: 0;
-    }
-
-    .icon-green { background: #e8f8f0; }
-    .icon-blue  { background: #e8f4fd; }
-
-    .card-meta {
-      flex: 1;
-    }
-
-    .programme-badge {
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 6px;
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 6px;
-    }
-
-    .badge-green { background: #e8f8f0; color: var(--green); }
-    .badge-blue  { background: #e8f4fd; color: var(--blue); }
-
-    .card-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--primary);
-      line-height: 1.3;
-    }
-
-    .card-subtitle {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    .card-body {
-      padding: 0 24px 16px;
-      flex: 1;
-    }
-
-    .card-desc {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
-
-    .topics-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .topic-tag {
-      background: #f0f0f0;
-      color: #555;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 11px;
-      font-weight: 500;
-    }
-
-    .card-footer {
-      padding: 16px 24px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      gap: 10px;
-    }
-
-    .btn {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 10px 16px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity 0.15s, transform 0.15s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
-
-    .btn-pdf {
-      background: var(--accent);
-      color: white;
-    }
-
-    .btn-docx {
-      background: #f0f0f0;
-      color: var(--primary);
-    }
-
-    .btn svg {
-      width: 15px;
-      height: 15px;
-      flex-shrink: 0;
-    }
-
-    /* INFO BAR */
-    .info-bar {
-      background: #fff3cd;
-      border: 1px solid #ffc107;
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      color: #664d03;
-    }
-
-    .info-bar .icon { font-size: 20px; flex-shrink: 0; }
-
-    /* FOOTER */
-    footer {
-      background: var(--primary);
-      color: rgba(255,255,255,0.7);
-      text-align: center;
-      padding: 32px 24px;
-      font-size: 13px;
-    }
-
-    footer strong { color: white; }
-
-    footer .contact {
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    footer .contact a {
-      color: var(--gold);
-      text-decoration: none;
-    }
-
-    @media (max-width: 600px) {
-      .header-main { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
-      .hero h2 { font-size: 26px; }
-      .hero { padding: 40px 20px 36px; }
-      .section { padding: 32px 16px; }
-    }
+    :root{--primary:#1a1a2e;--accent:#e94560;--gold:#f5a623;--green:#27ae60;--blue:#2980b9;--purple:#8e44ad;--teal:#16a085;--pink:#e91e8c;--orange:#e67e22;--light:#f8f9fa;--white:#fff;--border:#e0e0e0;--text:#2c2c2c;--muted:#6c757d}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--light);color:var(--text)}
+    nav{background:var(--primary);position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.3)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;flex-wrap:wrap;gap:12px}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .nav-logo-icon{width:38px;height:38px;background:var(--accent);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px}
+    .nav-logo span{color:#fff;font-size:18px;font-weight:800}
+    .nav-links{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+    .nav-links a{color:rgba(255,255,255,.75);text-decoration:none;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;transition:all .2s}
+    .nav-links a:hover{background:rgba(255,255,255,.1);color:#fff}
+    .nav-links .btn-login{background:var(--accent);color:#fff;padding:8px 18px;border-radius:8px}
+    .nav-links .btn-login:hover{background:#c73652}
+    .nav-links .btn-logout{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:8px 14px;border-radius:8px;font-size:12px}
+    .admin-badge{background:var(--gold);color:#1a1a2e;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700}
+    .hero{background:linear-gradient(135deg,var(--primary) 0%,#16213e 55%,#0f3460 100%);color:#fff;padding:80px 40px 70px;text-align:center}
+    .hero-flag{font-size:40px;margin-bottom:12px}
+    .hero h1{font-size:42px;font-weight:900;line-height:1.15;margin-bottom:16px}
+    .hero h1 span{color:var(--gold)}
+    .hero p{font-size:17px;color:rgba(255,255,255,.8);max-width:600px;margin:0 auto 32px;line-height:1.7}
+    .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+    .btn-hp{background:var(--accent);color:#fff;padding:14px 32px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;transition:opacity .2s}
+    .btn-hp:hover{opacity:.88}
+    .btn-hs{background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.3);color:#fff;padding:12px 28px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;transition:all .2s}
+    .btn-hs:hover{background:rgba(255,255,255,.2)}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:700px;margin:0 auto;gap:16px}
+    .hstat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:16px 10px;text-align:center}
+    .hstat .num{font-size:28px;font-weight:900;color:var(--gold)}
+    .hstat .lbl{font-size:11px;color:rgba(255,255,255,.6);margin-top:3px;text-transform:uppercase;letter-spacing:.5px}
+    .section{max-width:1140px;margin:0 auto;padding:56px 24px}
+    .sec-hdr{text-align:center;margin-bottom:40px}
+    .sec-hdr .ov{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:8px}
+    .sec-hdr h2{font-size:30px;font-weight:800;color:var(--primary);margin-bottom:10px}
+    .sec-hdr p{font-size:15px;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.6}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .pc{background:var(--white);border:2px solid var(--border);border-radius:20px;padding:32px 28px;position:relative;transition:transform .2s,box-shadow .2s}
+    .pc:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.1)}
+    .pc.feat{border-color:var(--accent);box-shadow:0 8px 32px rgba(233,69,96,.15)}
+    .pop-tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:5px 18px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap}
+    .pc-icon{font-size:40px;margin-bottom:12px}
+    .pc-title{font-size:20px;font-weight:800;color:var(--primary);margin-bottom:6px}
+    .pc-dur{font-size:13px;color:var(--muted);margin-bottom:18px}
+    .pc-price{margin-bottom:20px}
+    .pc-price .amt{font-size:38px;font-weight:900;color:var(--accent)}
+    .pc-price .cur{font-size:20px;font-weight:700;color:var(--accent);vertical-align:super}
+    .pc-price .zig{display:block;font-size:13px;color:var(--muted);margin-top:3px}
+    .pc-feats{list-style:none;margin-bottom:28px}
+    .pc-feats li{padding:7px 0;font-size:14px;color:#555;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;gap:8px}
+    .pc-feats li:last-child{border:none}
+    .pc-feats li::before{content:"✓";color:var(--green);font-weight:800;font-size:13px}
+    .btn-enroll{display:block;text-align:center;padding:12px;background:var(--accent);color:#fff;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;transition:opacity .2s}
+    .btn-enroll:hover{opacity:.88}
+    .btn-enroll-ol{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+    .btn-enroll-ol:hover{background:var(--accent);color:#fff;opacity:1}
+    .books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px}
+    .bcard{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+    .bcard:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.09)}
+    .bcard-top{padding:22px 22px 14px;display:flex;gap:14px;align-items:flex-start}
+    .bicon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+    .bg-red{background:#fdecea}.bg-blue{background:#e8f4fd}.bg-green{background:#e8f8f0}.bg-purple{background:#f4e8fd}.bg-orange{background:#fef4e8}.bg-gold{background:#fdf6e8}.bg-pink{background:#fde8f3}.bg-teal{background:#e8f6f3}
+    .bmeta{flex:1}
+    .bbadge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px}
+    .bdg-red{background:#fdecea;color:#c0392b}.bdg-blue{background:#e8f4fd;color:var(--blue)}.bdg-green{background:#e8f8f0;color:var(--green)}.bdg-purple{background:#f4e8fd;color:var(--purple)}.bdg-orange{background:#fef4e8;color:var(--orange)}.bdg-gold{background:#fdf6e8;color:#c87f0a}.bdg-pink{background:#fde8f3;color:var(--pink)}.bdg-teal{background:#e8f6f3;color:var(--teal)}
+    .btitle{font-size:16px;font-weight:700;color:var(--primary);line-height:1.3}
+    .bsub{font-size:12px;color:var(--muted);margin-top:2px}
+    .bbody{padding:0 22px 14px;flex:1}
+    .bdesc{font-size:13px;color:#555;line-height:1.6;margin-bottom:12px}
+    .bprice{font-size:18px;font-weight:800;color:var(--accent);margin-bottom:10px}
+    .bprice .zig{font-size:12px;color:var(--muted);font-weight:400;margin-left:6px}
+    .bprice .inc{font-size:12px;color:var(--green);font-weight:600}
+    .topics{display:flex;flex-wrap:wrap;gap:5px}
+    .topic{background:#f0f0f0;color:#555;padding:3px 9px;border-radius:10px;font-size:11px;font-weight:500}
+    .bfoot{padding:14px 22px;border-top:1px solid var(--border);display:flex;gap:8px}
+    .btn-dl{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 12px;border-radius:9px;font-size:12px;font-weight:700;text-decoration:none;transition:opacity .15s,transform .15s}
+    .btn-dl:hover{opacity:.85;transform:translateY(-1px)}
+    .btn-pdf{background:var(--accent);color:#fff}
+    .btn-docx{background:#f0f0f0;color:var(--primary)}
+    .btn-locked{background:#f8f8f8;color:#aaa;border:1px dashed #ccc;flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 12px;border-radius:9px;font-size:12px;font-weight:600;text-decoration:none}
+    .ol-wrap{background:linear-gradient(135deg,#0f3460 0%,#16213e 100%);border-radius:24px;padding:60px 48px;color:#fff;display:flex;gap:48px;align-items:center;flex-wrap:wrap}
+    .ol-text{flex:1;min-width:260px}
+    .ol-badge{display:inline-block;background:rgba(245,166,35,.2);border:1px solid rgba(245,166,35,.4);color:var(--gold);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:16px}
+    .ol-text h2{font-size:30px;font-weight:800;margin-bottom:12px;line-height:1.3}
+    .ol-text h2 span{color:var(--gold)}
+    .ol-text p{font-size:15px;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:24px}
+    .ol-feats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+    .olf{display:flex;align-items:center;gap:9px;font-size:13px;color:rgba(255,255,255,.85)}
+    .btn-wl{display:inline-block;background:var(--gold);color:var(--primary);padding:13px 28px;border-radius:12px;font-weight:800;font-size:14px;text-decoration:none;transition:opacity .2s}
+    .btn-wl:hover{opacity:.88}
+    .ol-cards{flex:1;min-width:240px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .olc{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px 16px;text-align:center}
+    .olc-icon{font-size:28px;margin-bottom:8px}
+    .olc-title{font-size:13px;font-weight:700;color:#fff}
+    .olc-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:3px}
+    .rbanner{background:#fff3cd;border:1px solid #ffc107;border-radius:12px;padding:14px 20px;margin-bottom:28px;display:flex;align-items:center;gap:12px;font-size:14px;color:#664d03}
+    .rbanner .icon{font-size:20px;flex-shrink:0}
+    .rbanner a{color:#b8860b;font-weight:700;text-decoration:none}
+    .tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+    .tcard{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px;transition:box-shadow .2s}
+    .tcard:hover{box-shadow:0 6px 20px rgba(0,0,0,.08)}
+    .tc-hdr{display:flex;align-items:center;gap:12px}
+    .tc-ico{width:44px;height:44px;background:#f0f0f0;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+    .tc-ttl{font-size:15px;font-weight:700;color:var(--primary)}
+    .tc-sub{font-size:12px;color:var(--muted)}
+    .tc-desc{font-size:13px;color:#555;line-height:1.6;flex:1}
+    .tc-foot{display:flex;gap:8px;margin-top:4px}
+    .contact-sec{background:var(--primary);color:#fff;padding:60px 40px;text-align:center}
+    .contact-sec h2{font-size:28px;font-weight:800;margin-bottom:10px}
+    .contact-sec p{color:rgba(255,255,255,.7);font-size:15px;margin-bottom:32px}
+    .cc-grid{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+    .cc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px 28px;text-align:center;min-width:160px}
+    .cc .ci{font-size:28px;margin-bottom:8px}
+    .cc .cl{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px}
+    .cc .cv{font-size:14px;font-weight:600;color:#fff}
+    .cc a{color:var(--gold);text-decoration:none}
+    footer{background:#111;color:rgba(255,255,255,.5);text-align:center;padding:24px;font-size:13px}
+    footer strong{color:#fff}
+    .sh3{font-size:16px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:18px}
+    @media(max-width:900px){.pricing-grid{grid-template-columns:1fr}.hero-stats{grid-template-columns:repeat(2,1fr)}.ol-wrap{padding:40px 28px}}
+    @media(max-width:600px){.hero{padding:50px 20px 48px}.hero h1{font-size:28px}.nav-inner{padding:12px 20px}.section{padding:36px 16px}}
   </style>
 </head>
 <body>
 
-<header>
-  <div class="header-top">
-    🇿🇼 Zimbabwe's #1 Practical Skills Programme — No O-Level Required
-  </div>
-  <div class="header-main">
-    <div class="logo-area">
-      <div class="logo-icon">🏫</div>
-      <div class="logo-text">
-        <h1>NtandoMods</h1>
-        <p>Till Operating &amp; ICT Course</p>
-      </div>
-    </div>
-    <div class="header-stats">
-      <div class="stat">
-        <div class="num">7</div>
-        <div class="label">Course Books</div>
-      </div>
-      <div class="stat">
-        <div class="num">2</div>
-        <div class="label">Programmes</div>
-      </div>
-      <div class="stat">
-        <div class="num">PDF</div>
-        <div class="label">Print-Ready</div>
-      </div>
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><div class="nav-logo-icon">🏫</div><span>NtandoMods</span></a>
+    <div class="nav-links">
+      <a href="#pricing">Pricing</a>
+      <a href="#downloads">Course Books</a>
+      <a href="#online">Online Learning</a>
+      <a href="#teachers">Teachers</a>
+      <a href="#contact">Contact</a>
+      {% if is_admin %}
+        <span class="admin-badge">ADMIN</span>
+        <a href="/logout" class="btn-logout">Logout</a>
+      {% else %}
+        <a href="/login" class="btn-login">Admin Login</a>
+      {% endif %}
     </div>
   </div>
-</header>
+</nav>
 
-<div class="hero">
-  <h2>Download Your <span>Course Books</span></h2>
-  <p>All NtandoMods course materials are available below as print-ready PDFs and editable Word documents. Download, print, and start learning today.</p>
-  <div class="hero-badges">
-    <span class="badge">📄 Print-Ready PDF</span>
-    <span class="badge">✏️ Editable DOCX</span>
-    <span class="badge">🆓 Free to Download</span>
-    <span class="badge">🏆 Certificate Awarded</span>
+<section class="hero">
+  <div class="hero-flag">🇿🇼</div>
+  <h1>Zimbabwe's #1 <span>Practical Skills</span> Training</h1>
+  <p>No O-Level required. No excuses. Just practical, job-ready skills and a NtandoMods certificate to prove it. Till operating, ICT, bookkeeping, social media and more.</p>
+  <div class="hero-ctas">
+    <a href="#pricing" class="btn-hp">View Course Prices</a>
+    <a href="#contact" class="btn-hs">📱 WhatsApp Us</a>
   </div>
-</div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="num">15</div><div class="lbl">Courses</div></div>
+    <div class="hstat"><div class="num">0</div><div class="lbl">O-Levels Needed</div></div>
+    <div class="hstat"><div class="num">$15</div><div class="lbl">Starts From</div></div>
+    <div class="hstat"><div class="num">🏆</div><div class="lbl">Cert Awarded</div></div>
+  </div>
+</section>
 
-<div class="section">
-
-  <div class="info-bar">
-    <span class="icon">💡</span>
-    <span><strong>Tip:</strong> Download the PDF version for printing. Download the DOCX version if you want to edit or customise the content.</span>
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="sec-hdr">
+    <div class="ov">Transparent Pricing</div>
+    <h2>Choose Your Programme</h2>
+    <p>All fees include materials, assessments and your NtandoMods certificate. Payment plans available.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pc">
+      <div class="pc-icon">🏪</div>
+      <div class="pc-title">Till Operating</div>
+      <div class="pc-dur">2-Week Short Course</div>
+      <div class="pc-price"><span class="cur">$</span><span class="amt">35</span><span class="zig">~ZiG 630 · Payment plans available</span></div>
+      <ul class="pc-feats">
+        <li>Cash handling &amp; float management</li>
+        <li>EcoCash, bank transfers, card swipe</li>
+        <li>Opening &amp; closing procedures</li>
+        <li>Daily practical assessments</li>
+        <li>NtandoMods certificate</li>
+      </ul>
+      <a href="#contact" class="btn-enroll btn-enroll-ol">Enrol Now</a>
+    </div>
+    <div class="pc feat">
+      <div class="pop-tag">⭐ MOST POPULAR</div>
+      <div class="pc-icon">💻</div>
+      <div class="pc-title">6-Month ICT Diploma</div>
+      <div class="pc-dur">Full Diploma Programme</div>
+      <div class="pc-price"><span class="cur">$</span><span class="amt">120</span><span class="zig">~ZiG 2,160 · Monthly installments available</span></div>
+      <ul class="pc-feats">
+        <li>Computer Basics &amp; Touch Typing</li>
+        <li>Microsoft Word (professional docs)</li>
+        <li>Microsoft Excel (budgets &amp; reports)</li>
+        <li>Microsoft PowerPoint</li>
+        <li>Email, Internet &amp; Google Drive</li>
+        <li>Social Media for Business</li>
+        <li>Full NtandoMods diploma certificate</li>
+      </ul>
+      <a href="#contact" class="btn-enroll">Enrol Now</a>
+    </div>
+    <div class="pc">
+      <div class="pc-icon">🎓</div>
+      <div class="pc-title">Combined Bundle</div>
+      <div class="pc-dur">2 Weeks + 6 Months</div>
+      <div class="pc-price"><span class="cur">$</span><span class="amt">140</span><span class="zig">~ZiG 2,520 · Save $15 vs separate</span></div>
+      <ul class="pc-feats">
+        <li>Everything in Till Operating</li>
+        <li>Everything in 6-Month Diploma</li>
+        <li>Priority scheduling</li>
+        <li>2 certificates awarded</li>
+        <li>Best value for job-seekers</li>
+      </ul>
+      <a href="#contact" class="btn-enroll btn-enroll-ol">Enrol Now</a>
+    </div>
   </div>
 
-  <!-- 2-WEEK SHORT COURSE -->
-  <div class="section-header">
-    <div class="section-line"></div>
-    <div class="section-title">2-Week Short Course</div>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="books-grid">
-    {% for book in books if book.badge_color == "green" %}
-    <div class="book-card">
-      <div class="card-header">
-        <div class="book-icon icon-{{ book.badge_color }}">{{ book.icon }}</div>
-        <div class="card-meta">
-          <span class="programme-badge badge-{{ book.badge_color }}">{{ book.badge }}</span>
-          <div class="card-title">{{ book.title }}</div>
-          <div class="card-subtitle">{{ book.subtitle }}</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <p class="card-desc">{{ book.description }}</p>
-        <div class="topics-list">
-          {% for topic in book.topics %}
-          <span class="topic-tag">{{ topic }}</span>
+  <div style="margin-top:48px">
+    <h3 style="font-size:20px;font-weight:800;color:var(--primary);margin-bottom:20px;text-align:center">Additional Short Courses</h3>
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden">
+      <table style="width:100%;border-collapse:collapse">
+        <thead><tr style="background:var(--primary);color:#fff">
+          <th style="padding:14px 20px;text-align:left;font-size:13px">Course</th>
+          <th style="padding:14px 16px;text-align:center;font-size:13px">Duration</th>
+          <th style="padding:14px 16px;text-align:center;font-size:13px">USD</th>
+          <th style="padding:14px 16px;text-align:center;font-size:13px">ZiG</th>
+          <th style="padding:14px 16px;text-align:center;font-size:13px">Certificate</th>
+        </tr></thead>
+        <tbody>
+          {% for book in student_books if book.category == "extra" %}
+          <tr style="border-bottom:1px solid var(--border);{% if loop.index is odd %}background:#fafafa{% endif %}">
+            <td style="padding:14px 20px;font-size:14px;font-weight:600;color:var(--primary)">{{ book.icon }} {{ book.title }}</td>
+            <td style="padding:14px 16px;text-align:center;font-size:13px;color:var(--muted)">{{ book.duration }}</td>
+            <td style="padding:14px 16px;text-align:center;font-size:15px;font-weight:800;color:var(--accent)">${{ book.fee_usd }}</td>
+            <td style="padding:14px 16px;text-align:center;font-size:13px;color:var(--muted)">~ZiG {{ book.fee_zig }}</td>
+            <td style="padding:14px 16px;text-align:center;font-size:13px">Yes</td>
+          </tr>
           {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:13px;margin-top:12px">All fees include materials, assessment and certificate. Payment plans available. WhatsApp: +263 77 162 9199</p>
+  </div>
+</section>
+
+<!-- ONLINE LEARNING -->
+<section style="background:var(--primary);padding:56px 24px" id="online">
+  <div style="max-width:1140px;margin:0 auto">
+    <div class="ol-wrap">
+      <div class="ol-text">
+        <span class="ol-badge">🚀 COMING SOON</span>
+        <h2>Learn NtandoMods <span>Anywhere in Zimbabwe</span></h2>
+        <p>We are building a full online learning platform so you can complete your NtandoMods course from your phone or laptop — wherever you are. Same certificate. Same quality. Zero travel costs.</p>
+        <div class="ol-feats">
+          <div class="olf"><span>📱</span> Learn on your phone</div>
+          <div class="olf"><span>🎥</span> Video lessons</div>
+          <div class="olf"><span>📝</span> Online assessments</div>
+          <div class="olf"><span>🏆</span> Digital certificate</div>
+          <div class="olf"><span>💬</span> WhatsApp tutor support</div>
+          <div class="olf"><span>⚡</span> Self-paced learning</div>
         </div>
+        <a href="#contact" class="btn-wl">📬 Join the Waitlist</a>
       </div>
-      <div class="card-footer">
-        <a href="/download/pdf/{{ book.pdf }}" class="btn btn-pdf">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
-          Download PDF
-        </a>
-        <a href="/download/docx/{{ book.docx }}" class="btn btn-docx">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
-          Download DOCX
-        </a>
+      <div class="ol-cards">
+        <div class="olc"><div class="olc-icon">💻</div><div class="olc-title">ICT Diploma</div><div class="olc-sub">Online — 2026</div></div>
+        <div class="olc"><div class="olc-icon">🏪</div><div class="olc-title">Till Operating</div><div class="olc-sub">Online — 2026</div></div>
+        <div class="olc"><div class="olc-icon">📒</div><div class="olc-title">Bookkeeping</div><div class="olc-sub">Online — 2026</div></div>
+        <div class="olc"><div class="olc-icon">📱</div><div class="olc-title">Social Media</div><div class="olc-sub">Online — 2026</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOADS -->
+<section class="section" id="downloads">
+  <div class="sec-hdr">
+    <div class="ov">Course Materials</div>
+    <h2>Student Course Books</h2>
+    <p>{% if is_admin %}You are logged in as admin. All downloads are unlocked.{% else %}Downloads are restricted to admin only. <a href="/login" style="color:var(--accent);font-weight:700">Login to download</a>.{% endif %}</p>
+  </div>
+  {% if not is_admin %}<div class="rbanner"><span class="icon">🔒</span><span>Downloads require admin login. <a href="/login">Click here to sign in</a>.</span></div>{% endif %}
+
+  <p class="sh3">2-Week Short Course</p>
+  <div class="books-grid" style="margin-bottom:40px">
+    {% for b in student_books if b.category == "short" %}
+    <div class="bcard">
+      <div class="bcard-top"><div class="bicon bg-{{ b.badge_color }}">{{ b.icon }}</div>
+        <div class="bmeta"><span class="bbadge bdg-{{ b.badge_color }}">{{ b.badge }}</span><div class="btitle">{{ b.title }}</div><div class="bsub">{{ b.subtitle }}</div></div>
+      </div>
+      <div class="bbody">
+        <p class="bdesc">{{ b.description }}</p>
+        {% if b.fee_usd %}<div class="bprice">${{ b.fee_usd }} USD <span class="zig">~ZiG {{ b.fee_zig }}</span></div>{% endif %}
+        <div class="topics">{% for t in b.topics %}<span class="topic">{{ t }}</span>{% endfor %}</div>
+      </div>
+      <div class="bfoot">
+        {% if is_admin %}
+        <a href="/download/{{ b.pdf }}" class="btn-dl btn-pdf"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>PDF</a>
+        <a href="/download/{{ b.docx }}" class="btn-dl btn-docx"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>DOCX</a>
+        {% else %}<a href="/login" class="btn-locked">🔒 Login to Download</a>{% endif %}
       </div>
     </div>
     {% endfor %}
   </div>
 
-  <!-- 6-MONTH DIPLOMA -->
-  <div class="section-header" style="margin-top: 48px;">
-    <div class="section-line"></div>
-    <div class="section-title">6-Month Full Diploma</div>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="books-grid">
-    {% for book in books if book.badge_color == "blue" %}
-    <div class="book-card">
-      <div class="card-header">
-        <div class="book-icon icon-{{ book.badge_color }}">{{ book.icon }}</div>
-        <div class="card-meta">
-          <span class="programme-badge badge-{{ book.badge_color }}">{{ book.badge }}</span>
-          <div class="card-title">{{ book.title }}</div>
-          <div class="card-subtitle">{{ book.subtitle }}</div>
-        </div>
+  <p class="sh3">6-Month ICT Diploma Books</p>
+  <div class="books-grid" style="margin-bottom:40px">
+    {% for b in student_books if b.category == "diploma" %}
+    <div class="bcard">
+      <div class="bcard-top"><div class="bicon bg-{{ b.badge_color }}">{{ b.icon }}</div>
+        <div class="bmeta"><span class="bbadge bdg-{{ b.badge_color }}">{{ b.badge }}</span><div class="btitle">{{ b.title }}</div><div class="bsub">{{ b.subtitle }}</div></div>
       </div>
-      <div class="card-body">
-        <p class="card-desc">{{ book.description }}</p>
-        <div class="topics-list">
-          {% for topic in book.topics %}
-          <span class="topic-tag">{{ topic }}</span>
-          {% endfor %}
-        </div>
+      <div class="bbody">
+        <p class="bdesc">{{ b.description }}</p>
+        <div class="bprice"><span class="inc">Included in $120 Diploma</span></div>
+        <div class="topics">{% for t in b.topics %}<span class="topic">{{ t }}</span>{% endfor %}</div>
       </div>
-      <div class="card-footer">
-        <a href="/download/pdf/{{ book.pdf }}" class="btn btn-pdf">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
-          Download PDF
-        </a>
-        <a href="/download/docx/{{ book.docx }}" class="btn btn-docx">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
-          Download DOCX
-        </a>
+      <div class="bfoot">
+        {% if is_admin %}
+        <a href="/download/{{ b.pdf }}" class="btn-dl btn-pdf"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>PDF</a>
+        <a href="/download/{{ b.docx }}" class="btn-dl btn-docx"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>DOCX</a>
+        {% else %}<a href="/login" class="btn-locked">🔒 Login to Download</a>{% endif %}
       </div>
     </div>
     {% endfor %}
   </div>
 
-</div>
-
-<footer>
-  <strong>NtandoMods</strong> — Empowering Zimbabwe, one skill at a time.
-  <div class="contact">
-    <a href="mailto:ntandomods@gmail.com">📧 ntandomods@gmail.com</a>
-    <span>🌐 ntandomods.co.zw</span>
-    <span>📍 Zimbabwe</span>
+  <p class="sh3">Additional Course Books</p>
+  <div class="books-grid">
+    {% for b in student_books if b.category == "extra" %}
+    <div class="bcard">
+      <div class="bcard-top"><div class="bicon bg-{{ b.badge_color }}">{{ b.icon }}</div>
+        <div class="bmeta"><span class="bbadge bdg-{{ b.badge_color }}">{{ b.badge }}</span><div class="btitle">{{ b.title }}</div><div class="bsub">{{ b.subtitle }}</div></div>
+      </div>
+      <div class="bbody">
+        <p class="bdesc">{{ b.description }}</p>
+        {% if b.fee_usd %}<div class="bprice">${{ b.fee_usd }} USD <span class="zig">~ZiG {{ b.fee_zig }}</span></div>{% endif %}
+        <div class="topics">{% for t in b.topics %}<span class="topic">{{ t }}</span>{% endfor %}</div>
+      </div>
+      <div class="bfoot">
+        {% if is_admin %}
+        <a href="/download/{{ b.pdf }}" class="btn-dl btn-pdf"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>PDF</a>
+        <a href="/download/{{ b.docx }}" class="btn-dl btn-docx"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>DOCX</a>
+        {% else %}<a href="/login" class="btn-locked">🔒 Login to Download</a>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
   </div>
-  <p style="margin-top: 14px; font-size: 12px;">© 2026 NtandoMods. All rights reserved.</p>
-</footer>
+</section>
 
+<!-- TEACHER GUIDES -->
+<section style="background:#f0f4ff;padding:56px 24px" id="teachers">
+  <div style="max-width:1140px;margin:0 auto">
+    <div class="sec-hdr">
+      <div class="ov">Instructor Resources</div>
+      <h2>Teacher Guides &amp; Admin Documents</h2>
+      <p>Full instructor handbooks, lesson plans and admin templates. Admin login required.</p>
+    </div>
+    {% if not is_admin %}<div class="rbanner"><span class="icon">🔒</span><span>Teacher guides are for admin only. <a href="/login">Login here</a>.</span></div>{% endif %}
+    <p class="sh3" style="margin-top:0">Teacher Guides</p>
+    <div class="tgrid" style="margin-bottom:36px">
+      {% for g in teacher_guides %}
+      <div class="tcard">
+        <div class="tc-hdr"><div class="tc-ico">{{ g.icon }}</div><div><div class="tc-ttl">{{ g.title }}</div><div class="tc-sub">{{ g.subtitle }}</div></div></div>
+        <div class="tc-desc">{{ g.description }}</div>
+        <div class="tc-foot">
+          {% if is_admin %}
+          <a href="/download/{{ g.pdf }}" class="btn-dl btn-pdf" style="font-size:12px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>PDF</a>
+          <a href="/download/{{ g.docx }}" class="btn-dl btn-docx" style="font-size:12px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>DOCX</a>
+          {% else %}<a href="/login" class="btn-locked" style="font-size:12px">🔒 Admin Only</a>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="sh3">Admin Documents</p>
+    <div class="tgrid">
+      {% for d in admin_docs %}
+      <div class="tcard">
+        <div class="tc-hdr"><div class="tc-ico">{{ d.icon }}</div><div><div class="tc-ttl">{{ d.title }}</div><div class="tc-sub">{{ d.subtitle }}</div></div></div>
+        <div class="tc-desc">{{ d.description }}</div>
+        <div class="tc-foot">
+          {% if is_admin %}
+          <a href="/download/{{ d.pdf }}" class="btn-dl btn-pdf" style="font-size:12px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>PDF</a>
+          <a href="/download/{{ d.docx }}" class="btn-dl btn-docx" style="font-size:12px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>DOCX</a>
+          {% else %}<a href="/login" class="btn-locked" style="font-size:12px">🔒 Admin Only</a>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+  <h2>Enrol or Get in Touch</h2>
+  <p>Ready to start? WhatsApp us now or send an email. We respond same day.</p>
+  <div class="cc-grid">
+    <div class="cc"><div class="ci">📱</div><div class="cl">WhatsApp</div><div class="cv"><a href="https://wa.me/263771629199">+263 77 162 9199</a></div></div>
+    <div class="cc"><div class="ci">📧</div><div class="cl">Email</div><div class="cv"><a href="mailto:ntandomods@gmail.com">ntandomods@gmail.com</a></div></div>
+    <div class="cc"><div class="ci">🌐</div><div class="cl">Website</div><div class="cv">ntandomods.co.zw</div></div>
+    <div class="cc"><div class="ci">📍</div><div class="cl">Location</div><div class="cv">Zimbabwe</div></div>
+  </div>
+  <p style="color:rgba(255,255,255,.5);font-size:13px">Payment plans available. EcoCash accepted.</p>
+</section>
+
+<footer><strong>NtandoMods</strong> — Empowering Zimbabwe, one skill at a time. &copy; 2026 All rights reserved.</footer>
 </body>
 </html>
